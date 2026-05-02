@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atlas Delights — Turizm & Restoran</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#070606;
+      --card: rgba(255,255,255,0.05);
+      --glass: rgba(255,255,255,0.06);
+      --accent:#caa15a; /* luks altın */
+      --muted: rgba(255,255,255,0.6);
+      --radius:18px;
+      --maxw:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; background:linear-gradient(180deg,#050405 0%, #0b0a0b 60%); color:#fff; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    .container{max-width:var(--maxw);margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo .mark{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#ead08a,#b88f3a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display';font-weight:700;color:#060404}
+    nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-weight:600}
+    .cta{background:var(--accent);padding:10px 16px;border-radius:12px;color:#060404;font-weight:700}
+
+    /* Hero */
+    .hero{min-height:76vh;display:grid;grid-template-columns:1fr 460px;gap:40px;align-items:center;padding:40px 0}
+    .hero-left h1{font-family:'Playfair Display';font-size:48px;margin:0 0 12px;letter-spacing:-1px}
+    .hero-left p{color:var(--muted);font-size:18px;line-height:1.6}
+    .hero-cards{display:flex;gap:16px;margin-top:24px}
+    .card{background:var(--glass);padding:16px;border-radius:14px;backdrop-filter: blur(6px);box-shadow:0 8px 30px rgba(0,0,0,0.6);}
+    .stat{font-size:22px;font-weight:700}
+
+    .hero-right{position:relative}
+    .hero-image{width:100%;height:480px;border-radius:20px;overflow:hidden;background-image:url('https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=');background-size:cover;background-position:center;box-shadow:0 30px 80px rgba(0,0,0,0.6)}
+    .badge{position:absolute;left:24px;top:24px;background:rgba(0,0,0,0.45);padding:10px 14px;border-radius:12px;font-weight:700}
+
+    /* Sections */
+    section{padding:56px 0}
+    h2{font-family:'Playfair Display';font-size:28px;margin:0 0 12px}
+    .muted{color:var(--muted)}
+
+    /* Activities grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .activity{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:16px;padding:18px;display:flex;gap:12px;align-items:center}
+    .activity img{width:86px;height:86px;border-radius:12px;object-fit:cover}
+    .activity h3{margin:0;font-size:18px}
+
+    /* Menu & booking */
+    .split{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
+    .menu-item{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.04)}
+    .menu-item h4{margin:0}
+
+    /* Gallery */
+    .gallery{display:flex;gap:12px}
+    .gallery img{width:100%;height:220px;object-fit:cover;border-radius:12px}
+
+    /* Testimonials */
+    .testimonials{display:flex;gap:12px}
+    .testimonial{background:var(--card);padding:18px;border-radius:14px}
+
+    footer{border-top:1px solid rgba(255,255,255,0.04);padding:28px 0;margin-top:22px;display:flex;justify-content:space-between;align-items:center}
+
+    /* Responsive */
+    @media(max-width:1000px){
+      .hero{grid-template-columns:1fr;}
+      .split{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:600px){
+      .grid{grid-template-columns:1fr}
+      nav a{display:none}
+      .logo .text{display:none}
+      .hero-left h1{font-size:32px}
+      .hero-image{height:320px}
+    }
+
+    /* small interactions */
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;background:transparent;border:1px solid rgba(255,255,255,0.06);cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent), #eec77c);color:#060404;border:none}
+
+    /* subtle entrance */
+    .fade-up{transform:translateY(18px);opacity:0;animation:fadeUp 700ms ease forwards}
+    .delay-1{animation-delay:150ms}.delay-2{animation-delay:300ms}.delay-3{animation-delay:450ms}
+    @keyframes fadeUp{to{transform:none;opacity:1}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="mark">AD</div>
+        <div class="text">
+          <div style="font-weight:700">Atlas Delights</div>
+          <div style="font-size:12px;color:var(--muted)">Luxury Tourism & Restaurant</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#activities">Deneyimler</a>
+        <a href="#menu">Menü</a>
+        <a href="#gallery">Galeri</a>
+        <a href="#contact">İletişim</a>
+        <a class="cta" href="#book">Rezervasyon</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-left">
+          <h1 class="fade-up delay-1">Turizm, Aktivite ve Gurme Deneyimi — Hepsi Bir Arada</h1>
+          <p class="muted fade-up delay-2">Denizde yat turları, dağ yürüyüşleri, şarap tadımları, gurme menüler ve unutulmaz etkinlikler — hepsi Atlas Delights'ta. Lüks, rahatlık ve profesyonellik bir araya geliyor.</p>
+
+          <div class="hero-cards fade-up delay-3">
+            <div class="card">
+              <div class="stat">Özel Turlar</div>
+              <div class="muted">Yat & karavan seçenekleri</div>
+            </div>
+            <div class="card">
+              <div class="stat">Gurme Menü</div>
+              <div class="muted">Yerel ve dünya lezzetleri</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-image"></div>
+          <div class="badge">5⭐ Lüks Deneyim</div>
+        </div>
+      </section>
+
+      <section id="activities">
+        <h2>Deneyimlerimiz</h2>
+        <p class="muted">Turizm aktiviteleri, gastronomik deneyimler ve açık hava etkinlikleri — her zevke göre.</p>
+        <div class="grid" style="margin-top:18px">
+          <div class="activity fade-up">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop&s=" alt="yat turu">
+            <div>
+              <h3>Yat Kiralama & Turlar</h3>
+              <p class="muted">Kaptanlı ve mürettebatlı özel turlar.</p>
+            </div>
+          </div>
+          <div class="activity fade-up">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800&auto=format&fit=crop&s=" alt="dağ yürüyüşü">
+            <div>
+              <h3>Doğa & Trekking</h3>
+              <p class="muted">Rehberli dağ yürüyüşleri ve fotoğraf rotaları.</p>
+            </div>
+          </div>
+          <div class="activity fade-up">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop&s=" alt="şarap tadımı">
+            <div>
+              <h3>Şarap & Gurme Tadımlar</h3>
+              <p class="muted">Sommelier eşliğinde seçkin tadımlar.</p>
+            </div>
+          </div>
+          <div class="activity fade-up">
+            <img src="https://images.unsplash.com/photo-1541544165429-3a0c2fa975f8?q=80&w=800&auto=format&fit=crop&s=" alt="su sporları">
+            <div>
+              <h3>Su Sporları</h3>
+              <p class="muted">Dalış, rüzgar sörfü ve kano.</p>
+            </div>
+          </div>
+          <div class="activity fade-up">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop&s=" alt="kültür turları">
+            <div>
+              <h3>Kültür & Tarih Turları</h3>
+              <p class="muted">Rehberli tarihi rotalar ve özel erişimler.</p>
+            </div>
+          </div>
+          <div class="activity fade-up">
+            <img src="https://images.unsplash.com/photo-1520201163981-3a2d0a1f9b3f?q=80&w=800&auto=format&fit=crop&s=" alt="özel etkinlik">
+            <div>
+              <h3>Özel Etkinlikler</h3>
+              <p class="muted">Düğün, kutlama ve kurumsal etkinlik organizasyonu.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu">
+        <h2>Restoran & Menü Öne Çıkanlar</h2>
+        <p class="muted">Seçkin malzemeler, şefin spesiyalleri ve deniz ürünleri öne çıkıyor.</p>
+        <div class="split" style="margin-top:18px">
+          <div>
+            <div class="menu-item">
+              <div>
+                <h4>Izgara Levrek — Şefin Özel Sosu</h4>
+                <div class="muted" style="font-size:13px">Taze günlük av</div>
+              </div>
+              <div style="font-weight:700">₺420</div>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h4>Trüflü Risotto</h4>
+                <div class="muted" style="font-size:13px">Kremalı, aromatik</div>
+              </div>
+              <div style="font-weight:700">₺360</div>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h4>Deniz Mahsullü Mezeler</h4>
+                <div class="muted" style="font-size:13px">Paylaşmalık tabak</div>
+              </div>
+              <div style="font-weight:700">₺220</div>
+            </div>
+
+            <div style="margin-top:18px"><button class="btn primary" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Hemen Rezervasyon Yap</button></div>
+          </div>
+
+          <aside>
+            <div style="background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:18px;border-radius:16px;">
+              <h3 style="margin-top:0">Rezervasyon</h3>
+              <form id="reserveForm">
+                <div style="margin-bottom:10px"><input placeholder="Adınız Soyadınız" required style="width:100%;padding:10px;border-radius:10px;border:none;background:rgba(255,255,255,0.03);color:#fff"></div>
+                <div style="margin-bottom:10px"><input type="date" required style="width:100%;padding:10px;border-radius:10px;border:none;background:rgba(255,255,255,0.03);color:#fff"></div>
+                <div style="margin-bottom:10px"><select required style="width:100%;padding:10px;border-radius:10px;border:none;background:rgba(255,255,255,0.03);color:#fff"><option>2 kişi</option><option>4 kişi</option><option>6+ kişi</option></select></div>
+                <div><button class="btn primary" type="submit">Rezervasyonu Gönder</button></div>
+              </form>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <h2>Galeri</h2>
+        <p class="muted">Mekan, etkinlik ve lezzetlerden kareler.</p>
+        <div class="gallery" style="margin-top:18px">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop&s=" alt="gallery1">
+          <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1200&auto=format&fit=crop&s=" alt="gallery2">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&s=" alt="gallery3">
+        </div>
+      </section>
+
+      <section id="testimonials">
+        <h2>Misafir Yorumları</h2>
+        <div class="testimonials" style="margin-top:18px">
+          <div class="testimonial">
+            <strong>Melis K.</strong>
+            <p class="muted">"Muhteşem hizmet, eşsiz manzara — kesinlikle tekrar geleceğim."</p>
+          </div>
+          <div class="testimonial">
+            <strong>Can A.</strong>
+            <p class="muted">"Yat turu ve akşam yemeği birleşimi rüya gibiydi."</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>İletişim</h2>
+        <p class="muted">Sorularınız veya kurumsal teklif talepleri için bize yazın.</p>
+        <div style="display:flex;gap:18px;margin-top:18px;flex-wrap:wrap">
+          <div style="flex:1;min-width:260px;background:var(--card);padding:18px;border-radius:16px">
+            <h3 style="margin-top:0">Adres</h3>
+            <p class="muted">Deniz Caddesi No:7, Bodrum</p>
+            <p class="muted">Tel: +90 555 555 5555</p>
+          </div>
+          <div style="flex:1;min-width:260px;background:var(--card);padding:18px;border-radius:16px">
+            <h3 style="margin-top:0">Bize Yazın</h3>
+            <form>
+              <input placeholder="Email" style="width:100%;padding:10px;border-radius:10px;border:none;background:rgba(255,255,255,0.03);color:#fff;margin-bottom:8px">
+              <textarea placeholder="Mesajınız" style="width:100%;padding:10px;border-radius:10px;border:none;background:rgba(255,255,255,0.03);color:#fff;min-height:100px"></textarea>
+              <div style="margin-top:8px"><button class="btn">Gönder</button></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div>
+          <strong>Atlas Delights</strong>
+          <div class="muted">© 2025 Tüm hakları saklıdır.</div>
+        </div>
+        <div class="muted">Sosyal: Instagram · Facebook · TripAdvisor</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // küçük etkileşimler
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.querySelectorAll('.fade-up').forEach((el,i)=>{ el.style.animationDelay = (i*80)+'ms'; el.classList.add('visible')});
+      document.getElementById('reserveForm')?.addEventListener('submit', (e)=>{ e.preventDefault(); alert('Rezervasyon talebiniz alındı — teşekkürler!'); e.target.reset(); });
+    });
+  </script>
+</body>
+</html>
